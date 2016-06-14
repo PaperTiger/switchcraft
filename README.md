@@ -8,19 +8,19 @@ Loop switcher, huh? Let's say in your template you want to display content insid
 {% for i in 1..10 %}
 
 	{% if loop.index is divisible by (3) %}
-		Content here
+		Content here display on every 3rd loop
 	{% endif %}
 	
 	{% if loop.index is divisible by (9) %}
-		Content here
+		Content here display on every 9th loop
 	{% endif %}
 	
-	{% if loop.index == 0 %}
-		Content here
+	{% if loop.index == 1 %}
+		Content here display on first loop
 	{% endif %}
 	
 	{% if loop.index is odd %}
-		Content here
+		And content here display on every odd loop
 	{% endif %}
 	
 {% endfor %}
@@ -34,23 +34,23 @@ With **Switcherify** you can just do this :
 	{% switcherify loop.index %}
 
 		{% on 'every3Items' %}
-			Content here
+			Content here display on every 3rd loop
 
 		{% on 'every9Items' %}
-			Content here
+			Content here display on every 9th loop
 
 		{% on 'firstItem' %}
-			Content here
+			Content here display on first loop
 			
 		{% on 'oddItem' %}
-			Content here
+			And content here display on every odd loop
 
 	{% endswitcherify %}
 
 {% endfor %}
 ```
 
-And of course there are [more](#usage)!
+And of course there are [more options](#usage)!
 
 
 
