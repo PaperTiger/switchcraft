@@ -17,7 +17,6 @@ require_once( 'SwitcherifyNode.php' );
 
 class SwitcherifyTwigExtension extends \Twig_Extension
 {
-
 	/**
 	 * Default Parameters
 	 * 
@@ -88,7 +87,6 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 			return ( $return ) ? 
 				$this->switcherifyCompiler( $context, $currentIndex, $cases, $return ) : 
 				$this->switcherifyCompiler( $context, $currentIndex, $cases, $return, true ) ;
-		
 		}
 	}
 
@@ -104,7 +102,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	 */
 	private function switcherifyCompiler( $context, $currentIndex, $key, $case, $test = false )
 	{
-		if( in_array( $key, self::$defaultParams )) 
+		if( in_array( $key, self::$defaultParams ))
 		{
 			switch ( $key ) 
 			{

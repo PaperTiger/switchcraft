@@ -31,7 +31,7 @@ class SwitcherifyPlugin extends BasePlugin
     {
         return 'http://papertiger.com';
     }
-
+    
     public function getPluginUrl()
     {
         return 'https://github.com/papertiger/Switcherify';

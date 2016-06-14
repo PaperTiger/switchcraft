@@ -55,7 +55,6 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 
 			if ( $stream->nextIf( \Twig_Token::BLOCK_END_TYPE ) ) 
 			{
-				
 				$body    = $this->parser->subparse( array( $this, 'decideSwitcherifyEnd' ), true );
 				$cases[] = new \Twig_Node( array(
 								'type' => new \Twig_Node( $type ),
