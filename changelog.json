@@ -1,15 +1,15 @@
 [
 	{
 		"version": "1.0.0",
-		"downloadUrl": "https://github.com/papertiger/Switcherify/archive/v1.0.0.zip",
+		"downloadUrl": "https://github.com/papertiger/Switchcraft/archive/v1.0.0.zip",
 		"date": "2016-06-15 00:00:00",
 		"notes": [
 			"## Initial Release. Available tag and filter :",
-			"[Added] {% switcherify on loop.index %}...{% endswitcherify %}",
-			"[Added] {% switcherify %} {% on loop.index %} {% endswitcherify %}",
-			"[Added] {% switcherify({ key : 'value' }) %}",
-			"[Added] {% switcherify( 'key', 'value' ) %}",
-			"[Added] {% switcherify( 'key' ) %}",
+			"[Added] {% switchcraft on loop.index %}...{% endswitchcraft %}",
+			"[Added] {% switchcraft %} {% on loop.index %} {% endswitchcraft %}",
+			"[Added] {% switchcraft({ key : 'value' }) %}",
+			"[Added] {% switchcraft( 'key', 'value' ) %}",
+			"[Added] {% switchcraft( 'key' ) %}",
 			"[Added] Default keys : firstItem, lastItem, oddItem, evenItem, everyNItems"
 		]
 	}

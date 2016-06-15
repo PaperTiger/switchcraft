@@ -1,6 +1,6 @@
 <?php
 /**
- * Switcherify
+ * Switchcraft
  * A Craft CMS Twig Extension for easier and human readable loop switcher
  *
  * @author    Paper Tiger <info@papertiger.com>
@@ -10,11 +10,11 @@
 
 namespace Craft;
 
-class SwitcherifyPlugin extends BasePlugin
+class SwitchcraftPlugin extends BasePlugin
 {
     public function getName()
     {
-        return Craft::t( 'Switcherify' );
+        return Craft::t( 'Switchcraft' );
     }
 
     public function getVersion()
@@ -34,7 +34,7 @@ class SwitcherifyPlugin extends BasePlugin
     
     public function getPluginUrl()
     {
-        return 'https://github.com/papertiger/Switcherify';
+        return 'https://github.com/papertiger/Switchcraft';
     }
 
     public function getDocumentationUrl()
@@ -44,7 +44,7 @@ class SwitcherifyPlugin extends BasePlugin
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/papertiger/Switcherify/master/changelog.json';
+        return 'https://raw.githubusercontent.com/papertiger/Switchcraft/master/changelog.json';
     }
     
     public function getSourceLanguage()
@@ -59,9 +59,9 @@ class SwitcherifyPlugin extends BasePlugin
 
     public function addTwigExtension()
     {
-        Craft::import( 'plugins.switcherify.twigextensions.SwitcherifyTwigExtension' );
+        Craft::import( 'plugins.switchcraft.twigextensions.SwitchcraftTwigExtension' );
 
-        return new SwitcherifyTwigExtension();
+        return new SwitchcraftTwigExtension();
     }
 
 }

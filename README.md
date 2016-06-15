@@ -1,4 +1,4 @@
-# Switcherify
+# Switchcraft
 
 A Craft CMS Twig Extension for easier and human readable loop switcher. 
 
@@ -26,12 +26,12 @@ Loop switcher, huh? Let's say in your template you want to display content insid
 {% endfor %}
 ```
 
-With **Switcherify** you can just do this :
+With **Switchcraft** you can just do this :
 
 ```Twig
 {% for i in 1..10 %}
 
-	{% switcherify loop.index %}
+	{% switchcraft loop.index %}
 
 		{% on 'every3Items' %}
 			Content here display on every 3rd loop
@@ -45,7 +45,7 @@ With **Switcherify** you can just do this :
 		{% on 'oddItem' %}
 			And content here display on every odd loop
 
-	{% endswitcherify %}
+	{% endswitchcraft %}
 
 {% endfor %}
 ```
@@ -55,41 +55,41 @@ And of course there are [more options](#usage)!
 
 
 ## Installation
-1. Download ZIP and unzip file then place the `switcherify` directory into your `craft/plugins` directory.
+1. Download ZIP and unzip file then place the `switchcraft` directory into your `craft/plugins` directory.
 
 2. Install the plugin through Control Panel under `Settings > Plugins`
 
    ​
 
 ## Usage
-**Switcherify** comes with two methods : tag and filter, so you can choose them for your convenience.
+**Switchcraft** comes with two methods : tag and filter, so you can choose them for your convenience.
 
 
 
 ### Tag
 
-You can use following tag `{% switcherify %} … {% endswitcherify %}` format, there are two ways to use this tag :
+You can use following tag format `{% switchcraft %} … {% endswitchcraft %}`, there are two ways to use this tag :
 
 
 
 #### Tag with direct checking
 
-Format : `{% switcherify loop.index on 'key' %} … {% endswitcherify %}`
+Format : `{% switchcraft loop.index on 'key' %} … {% endswitchcraft %}`
 
 ```Twig
 {% for i in 1..10 %}
 	
-	{% switcherify loop.index on 'firstItem' %}
+	{% switchcraft loop.index on 'firstItem' %}
 		<p>This will be displayed on first loop</p>
-	{% endswitcherify %}
+	{% endswitchcraft %}
 
-	{% switcherify loop.index on 'oddItem' %}
+	{% switchcraft loop.index on 'oddItem' %}
 		<p>This will be displayed on odd loop</p>
-	{% endswitcherify %}
+	{% endswitchcraft %}
 
-	{% switcherify loop.index on 'every3Items' %}
+	{% switchcraft loop.index on 'every3Items' %}
 		<p>This will only be displayed on every 3rd loop</p>
-	{% endswitcherify %}
+	{% endswitchcraft %}
 	
 	...
 
@@ -100,12 +100,12 @@ Format : `{% switcherify loop.index on 'key' %} … {% endswitcherify %}`
 
 #### Tag per block checking
 
-Format : `{% switcherify loop.index %} {% on 'key' %} ... {% endswitcherify %}`
+Format : `{% switchcraft loop.index %} {% on 'key' %} ... {% endswitchcraft %}`
 
 ```Twig
 {% for i in 1..10 %}
 
-	{% switcherify loop.index %}
+	{% switchcraft loop.index %}
 
 		{% on 'lastItem' %}
 			<p>This will only be displayed on last loop</p>
@@ -118,7 +118,7 @@ Format : `{% switcherify loop.index %} {% on 'key' %} ... {% endswitcherify %}`
 			
 		...
 
-	{% endswitcherify %}
+	{% endswitchcraft %}
 
 {% endfor %}
 ```
@@ -127,11 +127,11 @@ Format : `{% switcherify loop.index %} {% on 'key' %} ... {% endswitcherify %}`
 
 ### Filter
 
-As with tag, **Switcherify**'s filter name is like following : `switcherify`. There are three types of paramaters you can pass :
+As with tag, **Switchcraft**'s filter name is like following : `switchcraft`. There are three types of paramaters you can pass :
 
-1. [Array](#array) : `switcherify({ key : 'value', ... })`
-2. [Key + Value](#key+value) `switcherify( 'key', 'value' )`
-3. [Key Only](#keyonly) : `switcherify( 'key' )`
+1. [Array](#array) : `switchcraft({ key : 'value', ... })`
+2. [Key + Value](#key+value) `switchcraft( 'key', 'value' )`
+3. [Key Only](#keyonly) : `switchcraft( 'key' )`
 
 
 
@@ -143,7 +143,7 @@ Example usage :
 ```Twig
 {% for i in 1..10 %}
 
-	{% set className = loop.index | switcherify({
+	{% set className = loop.index | switchcraft({
 		firstItem    : 'sample-first-class',
 		oddItem      : 'sample-odd-class',
 		evenItem     : 'sample-even-class',
@@ -160,7 +160,7 @@ Or if you prefer to pass directly instead store it to variable :
 ```Twig
 {% for i in 1..10 %}
 
-	<p class="{{ loop.index | switcherify({ firstItem : 'sample-first-class', oddItem : 'sample-odd-class' }) }}">
+	<p class="{{ loop.index | switchcraft({ firstItem : 'sample-first-class', oddItem : 'sample-odd-class' }) }}">
 		Content here...
 	</p>
 	
@@ -176,7 +176,7 @@ Example usage :
 ```Twig
 {% for i in 1..10 %}
 
-	<p class="{{ loop.index | switcherify( 'every2Items', 'sample-2nd-class') }}">
+	<p class="{{ loop.index | switchcraft( 'every2Items', 'sample-2nd-class') }}">
 		Content here...
 	</p>
 	
@@ -187,14 +187,14 @@ Example usage :
 
 #### Key only
 
-Especially for this type, **Switcherify** will return a `boolean` value.  Example usage :
+Especially for this type, **Switchcraft** will return a `boolean` value.  Example usage :
 
 ```Twig
 This will check if loop is in every 3rd loop
 
 {% for i in 1..10 %}
 
-	{% if loop.index | switcherify( 'every3Items' ) %}
+	{% if loop.index | switchcraft( 'every3Items' ) %}
 		<p> I will only be displayed on every 3rd loop </p>
 	{% endif %}
 	

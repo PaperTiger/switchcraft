@@ -1,6 +1,6 @@
 <?php
 /**
- * Class SwitcherifyTokenParser
+ * Class SwitchcraftTokenParser
  *
  * @author    Paper Tiger <info@papertiger.com>
  * @copyright Copyright (c) 2016, Paper Tiger, Inc.
@@ -9,7 +9,7 @@
 
 namespace Craft;
 
-class SwitcherifyTokenParser extends \Twig_TokenParser
+class SwitchcraftTokenParser extends \Twig_TokenParser
 {
 	/**
 	 * Opening Tag Name
@@ -18,11 +18,11 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 	 */
 	public function getTag()
 	{
-		return 'switcherify';
+		return 'switchcraft';
 	}
 
 	/**
-	 * Parses {% switcherify %}...{% switcherify %} tags.
+	 * Parses {% switchcraft %}...{% switchcraft %} tags.
 	 *
 	 * @param \Twig_Token $token
 	 *
@@ -55,7 +55,7 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 
 			if ( $stream->nextIf( \Twig_Token::BLOCK_END_TYPE ) ) 
 			{
-				$body    = $this->parser->subparse( array( $this, 'decideSwitcherifyEnd' ), true );
+				$body    = $this->parser->subparse( array( $this, 'decideSwitchcraftEnd' ), true );
 				$cases[] = new \Twig_Node( array(
 								'type' => new \Twig_Node( $type ),
 								'body' => $body
@@ -87,7 +87,7 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 						$type[] = $this->parser->getExpressionParser()->parseExpression();
 
 						$stream->expect( \Twig_Token::BLOCK_END_TYPE );
-						$body    = $this->parser->subparse( array( $this, 'decideSwitcherifyFork' ) );
+						$body    = $this->parser->subparse( array( $this, 'decideSwitchcraftFork' ) );
 						$cases[] = new \Twig_Node( array(
 										'type' => new \Twig_Node( $type ),
 										'body' => $body
@@ -95,7 +95,7 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 						break;
 
 					}
-					case 'endswitcherify':
+					case 'endswitchcraft':
 					{	
 						$stream->next();
 						$stream->expect( \Twig_Token::BLOCK_END_TYPE );
@@ -104,13 +104,13 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 					}
 					default:
 					{
-						throw new \Twig_Error_Syntax(sprintf('Unexpected end of template. Twig was looking for the following tags "on", or "endswitcherify" to close the "switcherify" block started at line %d)', $lineno), -1);
+						throw new \Twig_Error_Syntax(sprintf('Unexpected end of template. Twig was looking for the following tags "on", or "endswitchcraft" to close the "switchcraft" block started at line %d)', $lineno), -1);
 					}
 				}
 			}
 		}
 
-		return new SwitcherifyNode( $currentIndex, new \Twig_Node( $cases ), $lineno, $this->getTag() );
+		return new SwitchcraftNode( $currentIndex, new \Twig_Node( $cases ), $lineno, $this->getTag() );
 	}
 
 	/**
@@ -120,9 +120,9 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 	 *
 	 * @return Mixed
 	 */
-	public function decideSwitcherifyFork( \Twig_Token $token )
+	public function decideSwitchcraftFork( \Twig_Token $token )
 	{
-		return $token->test(array('on', 'endswitcherify'));
+		return $token->test(array('on', 'endswitchcraft'));
 	}
 
 	/**
@@ -132,8 +132,8 @@ class SwitcherifyTokenParser extends \Twig_TokenParser
 	 *
 	 * @return Bool
 	 */
-	public function decideSwitcherifyEnd( \Twig_Token $token )
+	public function decideSwitchcraftEnd( \Twig_Token $token )
 	{
-		return $token->test('endswitcherify');
+		return $token->test('endswitchcraft');
 	}
 }

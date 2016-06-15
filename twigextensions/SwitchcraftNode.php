@@ -1,6 +1,6 @@
 <?php
 /**
- * Class SwitcherifyNode
+ * Class SwitchcraftNode
  *
  * @author    Paper Tiger <info@papertiger.com>
  * @copyright Copyright (c) 2016, Paper Tiger, Inc.
@@ -9,7 +9,7 @@
 
 namespace Craft;
 
-class SwitcherifyNode extends \Twig_Node
+class SwitchcraftNode extends \Twig_Node
 {
   /**
    * Construct

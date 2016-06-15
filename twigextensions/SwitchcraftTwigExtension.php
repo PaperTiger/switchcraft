@@ -1,6 +1,6 @@
 <?php
 /**
- * Class SwitcherifyTwigExtension
+ * Class SwitchcraftTwigExtension
  *
  * @author    Paper Tiger <info@papertiger.com>
  * @copyright Copyright (c) 2016, Paper Tiger, Inc.
@@ -12,10 +12,10 @@ namespace Craft;
 use Twig_Extension;
 use Twig_Filter_Method;
 
-require_once( 'SwitcherifyTokenParser.php' );
-require_once( 'SwitcherifyNode.php' );
+require_once( 'SwitchcraftTokenParser.php' );
+require_once( 'SwitchcraftNode.php' );
 
-class SwitcherifyTwigExtension extends \Twig_Extension
+class SwitchcraftTwigExtension extends \Twig_Extension
 {
 	/**
 	 * Default Parameters
@@ -31,7 +31,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	 */
 	public function getName()
 	{
-		return 'Switcherify';
+		return 'Switchcraft';
 	}
 	
 	/**
@@ -42,7 +42,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	public function getTokenParsers() 
 	{
 		return [
-			new SwitcherifyTokenParser(),
+			new SwitchcraftTokenParser(),
 		];
 	}
 
@@ -54,12 +54,12 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	public function getFilters()
 	{
 		return [
-			'switcherify' => new \Twig_Filter_Method( $this, 'switcherifyFilter', [ 'needs_context' => true ] )
+			'switchcraft' => new \Twig_Filter_Method( $this, 'switchcraftFilter', [ 'needs_context' => true ] )
 		];
 	}
 
 	/**
-	 * Add Switcherify functionality into filter
+	 * Add Switchcraft functionality into filter
 	 *
 	 * @param  Array  $context
 	 * @param  Int    $currentIndex
@@ -68,7 +68,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	 * 
 	 * @return Mixed
 	 */
-	public function switcherifyFilter( $context, $currentIndex, $cases, $return = null ) 
+	public function switchcraftFilter( $context, $currentIndex, $cases, $return = null ) 
 	{
 		if( is_array( $cases ) ) 
 		{
@@ -77,7 +77,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 
 			foreach($cases as $key => $case) 
 			{
-				$output[] = $this->switcherifyCompiler( $context, $currentIndex, $key, $case );
+				$output[] = $this->switchcraftCompiler( $context, $currentIndex, $key, $case );
 			}
 
 			return implode( $output , ' ');
@@ -85,8 +85,8 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 		} else {
 
 			return ( $return ) ? 
-				$this->switcherifyCompiler( $context, $currentIndex, $cases, $return ) : 
-				$this->switcherifyCompiler( $context, $currentIndex, $cases, $return, true ) ;
+				$this->switchcraftCompiler( $context, $currentIndex, $cases, $return ) : 
+				$this->switchcraftCompiler( $context, $currentIndex, $cases, $return, true ) ;
 		}
 	}
 
@@ -100,29 +100,29 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	 * 
 	 * @return Mixed
 	 */
-	private function switcherifyCompiler( $context, $currentIndex, $key, $case, $test = false )
+	private function switchcraftCompiler( $context, $currentIndex, $key, $case, $test = false )
 	{
 		if( in_array( $key, self::$defaultParams ))
 		{
 			switch ( $key ) 
 			{
 				case 'firstItem':
-					if( $context['loop']['first'] ) return $this->switcherifyDecider( $case, $test );
+					if( $context['loop']['first'] ) return $this->switchcraftDecider( $case, $test );
 				break;
 				case 'lastItem':
-					if( $currentIndex == $context['loop']['length'] ) return $this->switcherifyDecider( $case, $test );
+					if( $currentIndex == $context['loop']['length'] ) return $this->switchcraftDecider( $case, $test );
 				break;
 				case 'oddItem':
-					if( $currentIndex % 2 != 0 ) return $this->switcherifyDecider( $case, $test );
+					if( $currentIndex % 2 != 0 ) return $this->switchcraftDecider( $case, $test );
 				break;
 				case 'evenItem':
-					if( $currentIndex % 2 == 0 ) return $this->switcherifyDecider( $case, $test );
+					if( $currentIndex % 2 == 0 ) return $this->switchcraftDecider( $case, $test );
 				break;
 			}
 		} else {
 			if( preg_match( '/every(.*)Items/', $key, $matches ) && $matches[1] )
 			{
-				if( $currentIndex % $matches[1] == 0 ) return $this->switcherifyDecider( $case, $test );
+				if( $currentIndex % $matches[1] == 0 ) return $this->switchcraftDecider( $case, $test );
 			}
 		}
 	}
@@ -135,7 +135,7 @@ class SwitcherifyTwigExtension extends \Twig_Extension
 	 * 
 	 * @return Mixed
 	 */
-	private function switcherifyDecider( $case, $test = false )
+	private function switchcraftDecider( $case, $test = false )
 	{
 		return ( $test ) ? true : $case ;
 	}
