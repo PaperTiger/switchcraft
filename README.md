@@ -227,4 +227,4 @@ Following are available keys you can use :
 
 ## License
 
-Copyright 2016 Paper Tiger, Inc.
+Switchcraft 2016 by Hidayat Sagita for Paper Tiger Marketing, LLC.
