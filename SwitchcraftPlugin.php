@@ -12,49 +12,47 @@ namespace Craft;
 
 class SwitchcraftPlugin extends BasePlugin
 {
+    protected $name = 'Switchcraft';
+    protected $version = '1.0.0';
+    protected $developer = 'Paper Tiger';
+    protected $developerUrl = 'http://papertiger.com';
+    protected $pluginUrl = 'https://github.com/papertiger/Switchcraft';
+    protected $docUrl = $this->getPluginUrl() . '/blob/master/README.md';
+    protected $relUrl = 'https://raw.githubusercontent.com/papertiger/Switchcraft/master/changelog.json';
+
     public function getName()
     {
-        return Craft::t( 'Switchcraft' );
+        return $this->name;
     }
 
     public function getVersion()
     {
-        return '1.0.0';
+        return $this->version;
     }
 
     public function getDeveloper()
     {
-        return 'Paper Tiger';
+        return $this->developer;
     }
 
     public function getDeveloperUrl()
     {
-        return 'http://papertiger.com';
+        return $this->developerUrl;
     }
-    
+
     public function getPluginUrl()
     {
-        return 'https://github.com/papertiger/Switchcraft';
+        return $this->pluginUrl;
     }
 
     public function getDocumentationUrl()
     {
-        return $this->getPluginUrl() . '/blob/master/README.md';
+        return $this->docUrl;
     }
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/papertiger/Switchcraft/master/changelog.json';
-    }
-    
-    public function getSourceLanguage()
-    {
-        return 'en';
-    }
-
-    public function hasCpSection()
-    {
-        return false;
+        return $this->relUrl;
     }
 
     public function addTwigExtension()
